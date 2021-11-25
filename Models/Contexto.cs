@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SISTEMAVENDAS.Models.Consulta;
 
 namespace SISTEMAVENDAS.Models
 {
@@ -14,11 +15,15 @@ namespace SISTEMAVENDAS.Models
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public object Pedido { get; internal set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ClienteMap());
             builder.ApplyConfiguration(new PedidoMap());
             builder.ApplyConfiguration(new ProdutoMap());
         }
+
+        public DbSet<SISTEMAVENDAS.Models.Consulta.ConsultaPedidos> ConsultaPedidos { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace SISTEMAVENDAS.Models.Consulta
         public string cliente { get; set; } //cliente
         public string produto { get; set; }//produto
         public float quantidade { get; set; }//pedido
-        public float valor { get; set; }//produto
+        public double valor { get; set; }//produto
         public float total { get; set; } //calcular
     }
 }
