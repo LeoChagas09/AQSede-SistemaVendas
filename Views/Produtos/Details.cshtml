@@ -1,0 +1,43 @@
+﻿@model SISTEMAVENDAS.Models.Dominio.Produto
+
+@{
+    ViewData["Title"] = "Dados do Produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Informações do Produto</h1>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tipoproduto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tipoproduto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Editar</a> |
+    <a asp-action="Index">Voltar Lista Produtos</a>
+</div>

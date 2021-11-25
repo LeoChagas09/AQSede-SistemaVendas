@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SISTEMAVENDAS.Models.Dominio.Produto>
+
+@{
+    ViewData["Title"] = "Listar Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Produtos</h1>
+
+<p>
+    <a asp-action="Create">Adicionar Novo Produto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoproduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoproduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valor)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
