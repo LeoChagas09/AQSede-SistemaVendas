@@ -18,7 +18,7 @@ namespace SISTEMAVENDAS.Controllers
             contexto = context;
         }
 
-        public IActionResult ListarItensPedidos(int cli_id)
+        public IActionResult ListarItensPedidos(int cliID)
         {
             IEnumerable<ConsultaPedidos> lstItens = from item in contexto.Pedidos
                                                     .Include(c => c.cliente)
