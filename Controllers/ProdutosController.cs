@@ -22,9 +22,18 @@ namespace SISTEMAVENDAS.Controllers
         }
 
         // GET: Produtos
-        public async Task<IActionResult> Index()
+        public ViewResult Index(string searchString)
         {
-            return View(await _context.Produtos.ToListAsync());
+            ViewData["CurrentFilter"] = searchString;
+
+            var produtos = from s in _context.Produtos
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produtos = produtos.Where(s => s.nome.Contains(searchString));
+            }
+
+            return View(produtos.ToList());
         }
 
         // GET: Produtos/Details/5

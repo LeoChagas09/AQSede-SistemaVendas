@@ -25,6 +25,7 @@ namespace SISTEMAVENDAS.Controllers
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Pedidos.Include(p => p.cliente).Include(p => p.produto);
+
             return View(await contexto.ToListAsync());
         }
 

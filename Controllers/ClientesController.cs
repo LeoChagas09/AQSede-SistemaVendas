@@ -22,11 +22,19 @@ namespace SISTEMAVENDAS.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public ViewResult Index(string searchString)
         {
-            return View(await _context.Clientes.ToListAsync());
-        }
+            ViewData["CurrentFilter"] = searchString;
 
+            var clientes = from s in _context.Clientes
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                clientes = clientes.Where(s => s.nome.Contains(searchString));
+            }
+
+            return View(clientes.ToList());
+        }
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
