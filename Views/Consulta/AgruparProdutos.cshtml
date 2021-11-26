@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SISTEMAVENDAS.Models.Consulta.ProdutoGrp>
+
+@{
+    ViewData["Title"] = "AgruparProdutos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center ">Lista de quantidade de Produtos vendidos</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.qtdeProdutos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qtdeProdutos)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -25,5 +25,7 @@ namespace SISTEMAVENDAS.Models
         }
 
         public DbSet<SISTEMAVENDAS.Models.Consulta.ConsultaPedidos> ConsultaPedidos { get; set; }
+
+        public DbSet<SISTEMAVENDAS.Models.Consulta.ProdutoGrp> ProdutoGrp { get; set; }
     }
 }

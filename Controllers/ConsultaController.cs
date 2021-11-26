@@ -17,6 +17,21 @@ namespace SISTEMAVENDAS.Controllers
         {
             contexto = context;
         }
+        public IActionResult AgruparProdutos()
+        {
+            IEnumerable<ProdutoGrp> lstItensByProdutos = from item in contexto.Pedidos
+                                                         .Include(p => p.produto)
+                                                         .ToList()
+                                                         group item by new {item.produto.nome, item.quantidade }
+                                                         into grupo
+                                                         orderby grupo.Key.nome, grupo.Key.quantidade
+                                                         select new ProdutoGrp
+                                                         {
+                                                             nomeProduto = grupo.Key.nome,
+                                                             qtdeProdutos = grupo.Key.quantidade
+                                                         };
+            return View(lstItensByProdutos);
+        }
 
         public IActionResult ListarItensPedidos(int cliID)
         {
